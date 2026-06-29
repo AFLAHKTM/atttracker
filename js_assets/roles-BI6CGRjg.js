@@ -1,1 +1,0 @@
-const t={ADMIN:"admin",TEACHER:"teacher",STUDENT:"student"};function i(n){return(n==null?void 0:n.role)===t.ADMIN}function a(n){return(n==null?void 0:n.role)===t.TEACHER}function o(n){return(n==null?void 0:n.role)===t.STUDENT}export{t as R,a,o as b,i};

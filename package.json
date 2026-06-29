@@ -1,15 +1,18 @@
 {
-  "name": "percentage-tracket",
+  "name": "mkis-attendance-tracker",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Live Attendance & Leave Tracker for MKIS ERP",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server.js"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": ["attendance", "mkis", "erp"],
+  "author": "MUHAMMED AFLAH KT",
   "license": "ISC",
   "type": "commonjs",
+  "engines": {
+    "node": ">=18"
+  },
   "dependencies": {
     "express": "^5.2.1",
     "puppeteer": "^25.2.1"

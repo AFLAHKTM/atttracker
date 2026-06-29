@@ -76,9 +76,20 @@ function resolveTurbostream(json) {
 
 // Scraper function
 async function scrapeERPData() {
+  // Use local Chrome on Windows, system Chromium on Railway/Linux
+  const isLinux = process.platform === 'linux';
   const browser = await puppeteer.launch({
     headless: true,
-    executablePath: 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe',
+    executablePath: isLinux ? undefined : 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe',
+    args: isLinux ? [
+      '--no-sandbox',
+      '--disable-setuid-sandbox',
+      '--disable-dev-shm-usage',
+      '--disable-gpu',
+      '--no-first-run',
+      '--no-zygote',
+      '--single-process'
+    ] : [],
     defaultViewport: { width: 1280, height: 800 }
   });
 
