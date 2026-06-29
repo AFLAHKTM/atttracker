@@ -1,0 +1,38 @@
+MKIS ERP
+Student Management System
+NAVIGATION
+Dashboard
+Notifications
+My Profile
+Examinations
+Leave
+Settings
+MK
+MUHAMMED AFLAH KT
+muhammedaflah295@gmail.com
+Toggle Sidebar
+Dashboard
+My Exams
+Search...
+⌘
+K
+Toggle theme
+My Exams
+
+Register for upcoming exams and view your exam details
+
+Available for Registration(0)
+No exams available
+
+Check back later for upcoming exam registration opportunities
+
+My Registrations(0)
+Hall Ticket	Exam	Fee Amount	Payment Status	Actions
+
+No registrations yet
+
+Register for an exam to see your details here
+
+Search
+
+Search for pages and navigate quickly

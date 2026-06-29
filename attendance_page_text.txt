@@ -1,0 +1,53 @@
+MKIS ERP
+Student Management System
+NAVIGATION
+Dashboard
+Notifications
+My Profile
+Examinations
+Leave
+Settings
+MK
+MUHAMMED AFLAH KT
+muhammedaflah295@gmail.com
+Toggle Sidebar
+Dashboard
+Search...
+⌘
+K
+Toggle theme
+Good evening, MUHAMMED AFLAH KT
+Your Status
+Present
+
+Current status
+
+Request Leave
+Submit a new leave request if you need to be absent.
+Request Leave
+Today's Attendance Status
+Your attendance status for today's relevant events.
+Swaheehul' Bukhari
+- صحيح البخاري by AL USTHAD
+Present
+Lecture: تحفة (كتاب الجماعة) - AQEEDA
+- تحفة (كتاب الجماعة) by ABU BACKER AHASANI PARAPPUR @ Lecture hall 7
+Present
+Lecture: المقاصد التفتازاني - AQEEDA
+- المقاصد التفتازاني by Moosa Faizy Amappoyil @ Lecture hall 7
+Present
+Lecture: المقاصد التفتازاني - AQEEDA
+- المقاصد التفتازاني by Moosa Faizy Amappoyil @ Lecture hall 7
+Attendance Not Started
+Lecture: بدء الأمالي - AQEEDA
+- بدء الأمالي by Muhammad Abdul Hakeem Adany @ Lecture hall 7
+Present
+Lecture: المطول - AQEEDA
+- المطول by SHIHAB ALI AHSANI @ Lecture hall 7
+Present
+2nd Dars
+@ Bukhari Hall
+Absent
+Search
+
+Search for pages and navigate quickly

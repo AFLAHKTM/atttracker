@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Live Attendance & Leave Tracker</title>
+  <!-- Google Fonts: Outfit -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- Styling -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="glass-bg"></div>
+  <div class="glow-orb" id="orb-1"></div>
+  <div class="glow-orb" id="orb-2"></div>
+
+  <div class="container animate-fade-in">
+    <!-- Header Section -->
+    <header class="header card">
+      <div class="profile-area">
+        <div class="avatar-container">
+          <img id="avatar" src="1000965515_3iuscpg3yh.jpg" alt="Student Avatar" onerror="this.src='https://api.dicebear.com/7.x/initials/svg?seed=MA';">
+          <div class="status-badge pulse" id="status-badge">Present</div>
+        </div>
+        <div class="student-info">
+          <h1 id="student-name">MUHAMMED AFLAH KT</h1>
+          <p class="course-badge" id="student-course">BA ISLAMIC HISTORY</p>
+          <p class="email-info" id="student-email">muhammedaflah295@gmail.com</p>
+        </div>
+      </div>
+      <div class="actions-area">
+        <button class="btn btn-primary" id="sync-btn">
+          <i data-lucide="refresh-cw" id="sync-icon"></i>
+          <span>Sync Live Data</span>
+        </button>
+        <p class="sync-time">Last synced: <span id="sync-timestamp">Never</span></p>
+      </div>
+    </header>
+
+    <!-- Overall Statistics -->
+    <section class="stats-row">
+      <div class="card card-glow main-percentage-card">
+        <div class="card-header">
+          <h2>Overall Attendance</h2>
+          <span class="info-tooltip" title="Excused percentage excludes 'On Leave' days from the total lectures.">
+            <i data-lucide="info" class="size-4"></i>
+          </span>
+        </div>
+        <div class="percentage-split">
+          <div class="percentage-circle-wrapper">
+            <svg class="progress-ring" width="160" height="160">
+              <circle class="progress-ring-circle-bg" stroke="rgba(255, 255, 255, 0.05)" stroke-width="12" fill="transparent" r="70" cx="80" cy="80" />
+              <circle class="progress-ring-circle" id="actual-progress" stroke="url(#actual-gradient)" stroke-width="12" fill="transparent" r="70" cx="80" cy="80" />
+            </svg>
+            <div class="percentage-text">
+              <span class="pct-num" id="overall-actual-pct">0.0%</span>
+              <span class="pct-lbl">Actual</span>
+            </div>
+          </div>
+          <div class="percentage-circle-wrapper">
+            <svg class="progress-ring" width="160" height="160">
+              <circle class="progress-ring-circle-bg" stroke="rgba(255, 255, 255, 0.05)" stroke-width="12" fill="transparent" r="70" cx="80" cy="80" />
+              <circle class="progress-ring-circle" id="excused-progress" stroke="url(#excused-gradient)" stroke-width="12" fill="transparent" r="70" cx="80" cy="80" />
+            </svg>
+            <div class="percentage-text">
+              <span class="pct-num" id="overall-excused-pct">0.0%</span>
+              <span class="pct-lbl">Excused</span>
+            </div>
+          </div>
+        </div>
+        <!-- SVG Gradients Definition -->
+        <svg style="width:0;height:0;position:absolute;">
+          <defs>
+            <linearGradient id="actual-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#ff4b2b" />
+              <stop offset="100%" stop-color="#ff416c" />
+            </linearGradient>
+            <linearGradient id="excused-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#00b4db" />
+              <stop offset="100%" stop-color="#0083b0" />
+            </linearGradient>
+          </defs>
+        </svg>
+      </div>
+
+      <!-- Quick Metrics -->
+      <div class="metrics-grid">
+        <div class="card metric-card">
+          <div class="metric-icon present-icon">
+            <i data-lucide="check-circle-2"></i>
+          </div>
+          <div class="metric-info">
+            <p class="metric-label">Lectures Present</p>
+            <h3 id="metric-present">0</h3>
+          </div>
+        </div>
+        <div class="card metric-card">
+          <div class="metric-icon absent-icon">
+            <i data-lucide="alert-triangle"></i>
+          </div>
+          <div class="metric-info">
+            <p class="metric-label">Lectures Absent</p>
+            <h3 id="metric-absent">0</h3>
+          </div>
+        </div>
+        <div class="card metric-card">
+          <div class="metric-icon leave-icon">
+            <i data-lucide="calendar"></i>
+          </div>
+          <div class="metric-info">
+            <p class="metric-label">Lectures on Leave</p>
+            <h3 id="metric-leave">0</h3>
+          </div>
+        </div>
+        <div class="card metric-card">
+          <div class="metric-icon total-icon">
+            <i data-lucide="bar-chart-2"></i>
+          </div>
+          <div class="metric-info">
+            <p class="metric-label">Total Lectures</p>
+            <h3 id="metric-total">0</h3>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Subject Wise Details -->
+    <section class="section">
+      <div class="section-title">
+        <i data-lucide="book-open"></i>
+        <h2>Subject-wise Statistics</h2>
+      </div>
+      <div class="subject-grid" id="subject-wise-grid">
+        <!-- Rendered dynamically by app.js -->
+        <div class="skeleton-card"></div>
+        <div class="skeleton-card"></div>
+        <div class="skeleton-card"></div>
+      </div>
+    </section>
+
+    <!-- Absent Days Log Section -->
+    <section class="section absent-section">
+      <div class="section-title">
+        <i data-lucide="calendar-x" style="color: var(--accent-red)"></i>
+        <h2>Absent Days Log</h2>
+      </div>
+      <div class="card absent-card">
+        <div class="table-container">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Date of Absence</th>
+                <th>Lecture / Event Name</th>
+                <th>Teacher</th>
+                <th>Subject Name</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody id="absent-history-table">
+              <tr>
+                <td colspan="5" class="table-placeholder">No absent records synced yet.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- On Leave Days Log Section -->
+    <section class="section leave-days-section">
+      <div class="section-title">
+        <i data-lucide="calendar-check" style="color: var(--accent-orange)"></i>
+        <h2>On Leave Days Log</h2>
+      </div>
+      <div class="card leave-days-card">
+        <div class="table-container">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Date of Leave</th>
+                <th>Lecture / Event Name</th>
+                <th>Teacher</th>
+                <th>Subject Name</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody id="onleave-history-table">
+              <tr>
+                <td colspan="5" class="table-placeholder">No leave records synced yet.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- Leave Requests & Today's Timeline Split -->
+    <div class="split-layout">
+      <!-- Leave Requests History -->
+      <section class="section leave-section">
+        <div class="section-title">
+          <i data-lucide="clipboard-list"></i>
+          <h2>Leave Request History</h2>
+        </div>
+        <div class="card leave-card">
+          <div class="table-container">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Type</th>
+                  <th>Duration</th>
+                  <th>Dates</th>
+                  <th>Reason</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody id="leave-history-table">
+                <!-- Rendered dynamically by app.js -->
+                <tr>
+                  <td colspan="5" class="table-placeholder">No leaves synced yet.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- Today's Timetable -->
+      <section class="section timetable-section">
+        <div class="section-title">
+          <i data-lucide="clock"></i>
+          <h2>Today's Timetable Status</h2>
+        </div>
+        <div class="timetable-timeline" id="today-timetable-timeline">
+          <!-- Rendered dynamically by app.js -->
+          <div class="table-placeholder card">No classes scheduled for today.</div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <!-- Fullscreen Sync Overlay -->
+  <div class="sync-overlay" id="sync-overlay">
+    <div class="sync-loader-card">
+      <div class="spinner"></div>
+      <h3>Syncing Live Data...</h3>
+      <p>Logging into MKIS ERP and fetching real-time percentage counts. Please wait, this might take 10-15 seconds.</p>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

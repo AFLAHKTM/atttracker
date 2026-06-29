@@ -1,0 +1,299 @@
+MKIS ERP
+Student Management System
+NAVIGATION
+Dashboard
+Notifications
+My Profile
+Examinations
+Leave
+Settings
+MK
+MUHAMMED AFLAH KT
+muhammedaflah295@gmail.com
+Toggle Sidebar
+Dashboard
+Search...
+⌘
+K
+Toggle theme
+My Profile
+Edit Your Details
+Keep your information up to date.
+Profile Picture
+
+Max 1MB. Recommended: Square image.
+
+Basic Information
+Full Name
+
+MUHAMMED AFLAH KT
+
+Username
+
+Username cannot be changed.
+
+Email
+Date of Birth
+Personal Details
+Nationality
+Order of Birth
+Identification Mark
+Is Sayyid?
+Parent/Guardian Information
+Father's Name
+Father's Phone
+Father's Occupation
+Mother's Name
+Mother's Phone
+Mother's Occupation
+Is Orphan?
+Guardian Information
+Same as Father
+Same as Mother
+Guardian's Name
+Guardian's Phone
+Contact Information
+Phone Number
+Whatsapp Number
+Emergency Contact
+Identification & Health
+Aadhar Number
+Passport Number
+ID Card Number
+Blood Group
+O+
+A+
+A-
+B+
+B-
+AB+
+AB-
+O+
+O-
+Address Information
+Address Line 1
+Address Line 2
+Country
+India
+India
+Afghanistan
+Bangladesh
+Bhutan
+China
+Maldives
+Myanmar
+Nepal
+Pakistan
+Sri Lanka
+State
+Kerala
+Andhra Pradesh
+Arunachal Pradesh
+Assam
+Bihar
+Chhattisgarh
+Goa
+Gujarat
+Haryana
+Himachal Pradesh
+Jharkhand
+Karnataka
+Kerala
+Madhya Pradesh
+Maharashtra
+Manipur
+Meghalaya
+Mizoram
+Nagaland
+Odisha
+Punjab
+Rajasthan
+Sikkim
+Tamil Nadu
+Telangana
+Tripura
+Uttar Pradesh
+Uttarakhand
+West Bengal
+Andaman and Nicobar Islands
+Chandigarh
+Dadra and Nagar Haveli and Daman and Diu
+Delhi
+Jammu and Kashmir
+Ladakh
+Lakshadweep
+Puducherry
+District
+Malappuram
+Alappuzha
+Ernakulam
+Idukki
+Kannur
+Kasaragod
+Kollam
+Kottayam
+Kozhikode
+Malappuram
+Palakkad
+Pathanamthitta
+Thiruvananthapuram
+Thrissur
+Wayanad
+Locality
+Pincode
+Academic & Other Information
+Joining Year
+Material Education Status
+Enrolled in UG
+Not Enrolled for UG
+Enrolled in UG
+Completed UG
+Enrolled in PG
+Completed PG
+Enrolled in PhD
+Completed PhD
+Course/Program
+Previous Campus Information
+
+Choose the campus the student attended before joining. Use Other when it is not in the list.
+
+Previous Campus
+MA'DIN HIFZ DAWA COLLEGE
+AHLUSSUFFA DARS
+AJMEER GATE CAMPUS KARAD
+AJMEERIYA DARASS PATTARKADAV VALPARAMBA
+AL ASAS ACADEMY MARKAZ ALI GATE, KOLATHARA, CALICUT
+AL FIRDOUS COLLEGE OF ISLAMIC SCIENCE
+AL MADEENA ISLAMIC COMPLEX MANJANADY
+AL MUJAMMAUL ISLAMI DAWA COLLEGE TRIKARIPUR
+AL-AZHAR ISLAMIC EDUCATIONAL CENTRE
+ALAVIYYA DA'WA COLLEGE
+ATHIPPATTA DARS
+BADRIYYA DA'WA DARS KAREKKAD
+BADRUDHUJA ISLAMIC CENTRE
+BADRUL HUDA EXCELLENT ACADEMY, PONMALA, PALLIPPADI
+BUKHARI OF CAMPUS KALOOR, ERNAKULAM
+DALAILUSSUNNA DARS AYIROOR
+DARUL AMAN AL ISLAMIYA EDAVANNAPARA
+DARUL FURQAN KOPPAM
+DARUL IRSHAD SHARIHATH COLLEGE CHELEMBRA
+DARUSUFFA ACADEMY
+FIRDOUSIYYA DA'WA COLLEGE (MA'DIN OFF CAMPUS) PERINTHALMANNA
+GARIB NAVAZ DAWA DARS
+ICS ACADEMY MANHAPPATTA
+INTHISHARUSSUNNA VALIYORA
+IRSHADHUL ANAM DARS
+IRSHADUL ANAM MA'DIN OFF CAMPUS KIZHUPARAMABA
+JAMIA ABEE HURAIRA, KAREKKAD
+JAMIA ASH ARIYYA DA' WA COLLEGE
+JAMIA DARUL MA'ARIFIL ISLAMIYA VALIYORA
+JAMIA MARKAZ
+KAM QURAN ACADEMY
+KGN DA'AWA COLLEGE MITHUR, MANI
+KODENCHERY DAWA COLLEGE
+MA'DIN AL IRSHAD CAMPUS, THRIPPANACHI
+MA'DIN BRILLIANCE ACADEMY ANAMANGAD HIGH SCHOOL PADI
+MA'DIN CM CAMPUS NEDUMANGAD, TRIVANDRUM.
+MA'DIN COLLEGE OF INTEGRATED STUDIES, EDUPARK
+MA'DIN COLLEGE OF ISLAMIC DA'WA, KADANNAMANNA
+MA'DIN DN CAMPUS, PERUMPARAMBU
+MA'DIN DREAM STREET
+MA'DIN HIFZ DAWA COLLEGE
+MA'DIN JAMIA ABEE HURAIRA
+MA'DIN MISBAH COLLEGE OF INTEGRATED STUDIES, KANJIRATHANI
+MA'DIN MODEL ACADEMY
+MA'DIN MODEL ACCADEMY AL IRSHAD TRIPPANACHI
+MA'DIN RAZI CAMPUS KAINODE
+MA'DIN SADATH ACADEMY
+MA'DIN SCHOOL OF EXCELLENCE
+MA'DIN SUFFA CAMPUS, MOONNIYUR
+MADADUL BADR SAHITHYA SAMAJAM DARS
+MADEENA MAKHDOOM ISLAMIC ACADEMY, SULTHAN BATHERY, WAYANAD
+MADEENATHUNASWEEHA
+MAJMAU IRINGALLUR
+MAJMAUL ULOOM DARS THENNALA
+MAKHDOOMIYYA DARS , CHERIYAPARAMBA
+MANBAUSSUNNA INTEGRATED STUDIES VALANCHERY.
+MANHAJ KARUVARAKUND
+MANSHAU AL HUMAIDIYYA SHAREE-ATH COLLEGE MATTOOL NORTH
+MAQDOOMIYYA ISLAMIC ACADEMY NELLIKUTH
+MARAKAZUL HIDAYA DA'WA COLLEGE
+MARKAZ DA'WATHUL ISLAMIYYA MARKAZ KAIKAMBA
+MARKAZ MASALIH CHAPPANANGADI
+MARKAZU DAW'ATHIL ISLAMIYYA RANGATOOR (KUTTIPPURAM)
+MASLAKUL IRFAN OMACHAPPUZHA
+MG ACADEMY KUNDOOR
+MISBAHUL HUDA DARS CHEERAKKUZHI
+MISBAHULHUDA DARS MARAYAMKUNNU
+MUHYISUNNA DARS NELLISHERI
+MULHIRUSSUNNA CHOLAKKAD
+MULHIRUSSUNNA KANTHAPURAM
+NAJATH DA'WA COLLEGE PERUVALLUR
+NASEEM ACADEMY
+PMSM DAWA COLLEGE KUTTASHERI
+SHARAFUL ISLAM MASJID PUNNAPRA ,ALAPPUZHA
+SHUHADA SMARAKA DARS CHERUR
+UTHMANIYYA COLLAGE OF EXCELLENCE (OTTAPPALAM MARKAZ)
+VADIBADR VENGAD
+WADI IRFAN ACADEMY
+ZAINUSSUNNA ISLAMIC ACADEMY, NHAMANGHAT
+ZIKRA THEOLOGICAL ACADEMY, MOODBIDRI
+Other
+Additional Information
+
+These questions are managed by the admin team and may be required for dashboard access.
+
+No additional custom fields are active right now.
+Relation with Madin (if any)
+SSF Position
+Sector Executive
+Not Applicable
+Member
+Unit President
+Unit Secretary
+Unit Secretariat
+Unit Executive
+Sector President
+Sector Secretary
+Sector Secretariat
+Sector Executive
+Division President
+Division Secretary
+Division Secretariat
+Division Executive
+District President
+District Secretary
+District Secretariat
+District Executive
+State President
+State Secretary
+State Secretariat
+State Executive
+Update Profile
+Skills
+Add Skill
+Graphic Design (Expert)
+Edit
+Delete
+Languages
+Add Language
+Malayalam (Mother Tongue)
+Reading: Native
+Writing: Native
+Speaking: Native
+Edit
+Delete
+English (Mother Tongue)
+Reading: Conversational
+Writing: Conversational
+Speaking: Conversational
+Edit
+Delete
+Achievements
+Add Achievement
+
+No achievements added yet.
+
+Search
+
+Search for pages and navigate quickly

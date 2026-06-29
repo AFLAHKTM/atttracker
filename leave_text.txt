@@ -1,0 +1,32 @@
+MKIS ERP
+Student Management System
+NAVIGATION
+Dashboard
+Notifications
+My Profile
+Examinations
+Leave
+Settings
+MK
+MUHAMMED AFLAH KT
+muhammedaflah295@gmail.com
+Toggle Sidebar
+Dashboard
+Search...
+⌘
+K
+Toggle theme
+My Leave Requests(3)
+
+Submit and track your leave requests
+
+New Request
+History(3)
+Your submitted leave requests and their status
+Leave Type	Start Date	End Date	Reason	Status	Requested On	Actions
+ACADEMIC	17 May 2026	18 May 2026	Jamiathul hind exam	Rejected	17 May 2026, 9:00 AM	
+Exam	16 May 2026	17 May 2026	Jamiathul hind exam	Returned	16 May 2026, 11:27 AM	
+Exam	04 May 2026	06 May 2026	Degree Exam @ kochi	Returned	04 May 2026, 1:49 PM	
+Search
+
+Search for pages and navigate quickly
