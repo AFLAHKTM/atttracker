@@ -3,7 +3,7 @@ let syncBtn, syncIcon, syncOverlay, syncTimestamp;
 let avatarImg, statusBadge, studentName, studentCourse, studentEmail;
 let overallActualPct, overallExcusedPct, actualCircle, excusedCircle;
 let metricPresent, metricAbsent, metricLeave, metricTotal;
-let subjectGrid, absentHistoryTable, onleaveHistoryTable, leaveHistoryTable, todayTimetableTimeline;
+let subjectGrid, recentHistoryTable, absentHistoryTable, onleaveHistoryTable, leaveHistoryTable, todayTimetableTimeline;
 
 // Circumference of Progress Rings (2 * PI * r = 2 * Math.PI * 70 = 439.82)
 const CIRCUMFERENCE = 439.82;
@@ -42,6 +42,28 @@ async function updateDashboard(refresh = false) {
       syncOverlay.classList.remove('active');
       syncIcon.classList.remove('spin-animation');
     }
+  }
+}
+
+// Helper to format date relatively (Today, Yesterday, or standard Date)
+function formatRelativeDate(dateStr) {
+  if (!dateStr || dateStr === 'Unknown') return '—';
+  const dateObj = new Date(dateStr);
+  const today = new Date();
+  const yesterday = new Date();
+  yesterday.setDate(today.getDate() - 1);
+
+  // Strip time for clean comparison
+  const dStr = dateObj.toDateString();
+  const tStr = today.toDateString();
+  const yStr = yesterday.toDateString();
+
+  if (dStr === tStr) {
+    return 'Today';
+  } else if (dStr === yStr) {
+    return 'Yesterday';
+  } else {
+    return dateObj.toLocaleDateString('en-US', { day: 'numeric', month: 'short', year: 'numeric' });
   }
 }
 
@@ -92,30 +114,6 @@ function renderStats(stats, lastSynced) {
   subjectGrid.innerHTML = '';
   if (stats.subjects && stats.subjects.length > 0) {
     stats.subjects.forEach(subj => {
-      // Recent history dots
-      let dotsHtml = '';
-      if (subj.history && subj.history.length > 0) {
-        subj.history.forEach(h => {
-          let dotClass = 'dot-neutral';
-          let label = '?';
-          if (h.status === 'Present') {
-            dotClass = 'dot-present';
-            label = 'P';
-          } else if (h.status === 'Absent') {
-            dotClass = 'dot-absent';
-            label = 'A';
-          } else if (h.status === 'On Leave') {
-            dotClass = 'dot-leave';
-            label = 'L';
-          }
-          const dateObj = new Date(h.date);
-          const formattedDate = dateObj.toLocaleDateString('en-US', { day: 'numeric', month: 'short' });
-          dotsHtml += `<span class="recent-dot ${dotClass}" title="${h.status} (${formattedDate})">${label}</span>`;
-        });
-      } else {
-        dotsHtml = '<span class="text-xs text-muted">No recent records</span>';
-      }
-
       const card = document.createElement('div');
       card.className = 'card subject-card';
       card.innerHTML = `
@@ -133,12 +131,6 @@ function renderStats(stats, lastSynced) {
           <span>Present: <strong>${subj.present}</strong></span>
           <span>Absent: <strong>${subj.absent}</strong></span>
           <span>Leave: <strong>${subj.onLeave}</strong></span>
-        </div>
-        <div class="subject-recent-attendance">
-          <span class="recent-title">Recent 7:</span>
-          <div class="recent-dots">
-            ${dotsHtml}
-          </div>
         </div>
       `;
       subjectGrid.appendChild(card);
@@ -166,6 +158,37 @@ function renderStats(stats, lastSynced) {
     leaveHistoryTable.innerHTML = `
       <tr>
         <td colspan="5" class="table-placeholder">No formal leave requests found in history.</td>
+      </tr>
+    `;
+  }
+
+  // 5a. Recent Attendance Log Table (Last 7 Lectures)
+  recentHistoryTable.innerHTML = '';
+  if (stats.recentAttendance && stats.recentAttendance.length > 0) {
+    stats.recentAttendance.forEach(rec => {
+      const row = document.createElement('tr');
+      const formattedDate = formatRelativeDate(rec.date);
+      
+      let badgeClass = 'approved';
+      if (rec.status === 'Absent') {
+        badgeClass = 'rejected';
+      } else if (rec.status === 'On Leave') {
+        badgeClass = 'returned';
+      }
+
+      row.innerHTML = `
+        <td><strong>${formattedDate}</strong></td>
+        <td>${rec.event_name}</td>
+        <td>${rec.teacher_name || '—'}</td>
+        <td>${rec.subject_name}</td>
+        <td><span class="status-label ${badgeClass}">${rec.status}</span></td>
+      `;
+      recentHistoryTable.appendChild(row);
+    });
+  } else {
+    recentHistoryTable.innerHTML = `
+      <tr>
+        <td colspan="5" class="table-placeholder">No recent attendance records found.</td>
       </tr>
     `;
   }
@@ -273,6 +296,7 @@ document.addEventListener('DOMContentLoaded', () => {
   metricTotal = document.getElementById('metric-total');
 
   subjectGrid = document.getElementById('subject-wise-grid');
+  recentHistoryTable = document.getElementById('recent-history-table');
   absentHistoryTable = document.getElementById('absent-history-table');
   onleaveHistoryTable = document.getElementById('onleave-history-table');
   leaveHistoryTable = document.getElementById('leave-history-table');

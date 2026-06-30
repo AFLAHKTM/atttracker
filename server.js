@@ -21,8 +21,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 let statsCache = null;
 let lastSynced = null;
 let isSyncing = false;
-let cachedToken = null;
-let cachedUserId = null;
 
 // Resolve turbostream JSAN references (index-based references)
 function resolveTurbostream(json) {
@@ -89,8 +87,8 @@ async function scrapeERPData() {
   
   let dashboardDataRaw = null;
   let leaveRequests = [];
-  let token = cachedToken;
-  let userId = cachedUserId;
+  let token = null;
+  let userId = null;
   let studentId = null;
 
   // Intercept data files and API calls
@@ -110,8 +108,6 @@ async function scrapeERPData() {
         const json = JSON.parse(text);
         token = json.token;
         userId = json.record.id;
-        cachedToken = token;
-        cachedUserId = userId;
       } catch (err) {
         // ignore
       }
@@ -192,6 +188,7 @@ async function scrapeERPData() {
       // Fetch leave history and absences if token is available
       let absencesList = [];
       let onLeavesList = [];
+      let recentList = [];
       if (token && userId) {
         try {
           console.log('[Scraper] Fetching leave requests from PocketBase API...');
@@ -274,6 +271,8 @@ async function scrapeERPData() {
                   } else if (status === 'On Leave') {
                     onLeavesList.push(rec);
                   }
+                  
+                  recentList.push(rec);
 
                   // Aggregate subject stats
                   if (!subjectMap.has(subjectName)) {
@@ -283,18 +282,12 @@ async function scrapeERPData() {
                       absent: 0,
                       onLeave: 0,
                       excusedLeaves: 0,
-                      total: 0,
-                      history: []
+                      total: 0
                     });
                   }
                   const stats = subjectMap.get(subjectName);
                   stats.total++;
                   overallTotal++;
-
-                  stats.history.push({
-                    status: status,
-                    date: ev ? ev.date : 'Unknown'
-                  });
 
                   if (status === 'Present') {
                     stats.present++;
@@ -313,6 +306,10 @@ async function scrapeERPData() {
                   }
                 });
 
+                // Sort chronologically (newest first) and take the top 7
+                recentList.sort((a, b) => new Date(b.date) - new Date(a.date));
+                recentList = recentList.slice(0, 7);
+
                 // Populate subjects list
                 subjectMap.forEach((stats) => {
                   subjects.push({
@@ -322,8 +319,7 @@ async function scrapeERPData() {
                     onLeave: stats.onLeave,
                     total: stats.total,
                     percentage: stats.total > 0 ? parseFloat(((stats.present / stats.total) * 100).toFixed(2)) : 0,
-                    excusedPercentage: (stats.total - stats.excusedLeaves) > 0 ? parseFloat(((stats.present / (stats.total - stats.excusedLeaves)) * 100).toFixed(2)) : 0,
-                    history: stats.history.slice(0, 7)
+                    excusedPercentage: (stats.total - stats.excusedLeaves) > 0 ? parseFloat(((stats.present / (stats.total - stats.excusedLeaves)) * 100).toFixed(2)) : 0
                   });
                 });
               }
@@ -368,6 +364,7 @@ async function scrapeERPData() {
         leaves: leaveRequests,
         absences: absencesList,
         onLeaves: onLeavesList,
+        recentAttendance: recentList,
         todayTimetable: resolved.studentAttendanceSummary || []
       };
 
