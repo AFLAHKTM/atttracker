@@ -21,6 +21,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 let statsCache = null;
 let lastSynced = null;
 let isSyncing = false;
+let cachedToken = null;
+let cachedUserId = null;
 
 // Resolve turbostream JSAN references (index-based references)
 function resolveTurbostream(json) {
@@ -87,8 +89,8 @@ async function scrapeERPData() {
   
   let dashboardDataRaw = null;
   let leaveRequests = [];
-  let token = null;
-  let userId = null;
+  let token = cachedToken;
+  let userId = cachedUserId;
   let studentId = null;
 
   // Intercept data files and API calls
@@ -108,6 +110,8 @@ async function scrapeERPData() {
         const json = JSON.parse(text);
         token = json.token;
         userId = json.record.id;
+        cachedToken = token;
+        cachedUserId = userId;
       } catch (err) {
         // ignore
       }
@@ -279,12 +283,18 @@ async function scrapeERPData() {
                       absent: 0,
                       onLeave: 0,
                       excusedLeaves: 0,
-                      total: 0
+                      total: 0,
+                      history: []
                     });
                   }
                   const stats = subjectMap.get(subjectName);
                   stats.total++;
                   overallTotal++;
+
+                  stats.history.push({
+                    status: status,
+                    date: ev ? ev.date : 'Unknown'
+                  });
 
                   if (status === 'Present') {
                     stats.present++;
@@ -312,7 +322,8 @@ async function scrapeERPData() {
                     onLeave: stats.onLeave,
                     total: stats.total,
                     percentage: stats.total > 0 ? parseFloat(((stats.present / stats.total) * 100).toFixed(2)) : 0,
-                    excusedPercentage: (stats.total - stats.excusedLeaves) > 0 ? parseFloat(((stats.present / (stats.total - stats.excusedLeaves)) * 100).toFixed(2)) : 0
+                    excusedPercentage: (stats.total - stats.excusedLeaves) > 0 ? parseFloat(((stats.present / (stats.total - stats.excusedLeaves)) * 100).toFixed(2)) : 0,
+                    history: stats.history.slice(0, 7)
                   });
                 });
               }

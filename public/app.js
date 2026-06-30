@@ -92,6 +92,30 @@ function renderStats(stats, lastSynced) {
   subjectGrid.innerHTML = '';
   if (stats.subjects && stats.subjects.length > 0) {
     stats.subjects.forEach(subj => {
+      // Recent history dots
+      let dotsHtml = '';
+      if (subj.history && subj.history.length > 0) {
+        subj.history.forEach(h => {
+          let dotClass = 'dot-neutral';
+          let label = '?';
+          if (h.status === 'Present') {
+            dotClass = 'dot-present';
+            label = 'P';
+          } else if (h.status === 'Absent') {
+            dotClass = 'dot-absent';
+            label = 'A';
+          } else if (h.status === 'On Leave') {
+            dotClass = 'dot-leave';
+            label = 'L';
+          }
+          const dateObj = new Date(h.date);
+          const formattedDate = dateObj.toLocaleDateString('en-US', { day: 'numeric', month: 'short' });
+          dotsHtml += `<span class="recent-dot ${dotClass}" title="${h.status} (${formattedDate})">${label}</span>`;
+        });
+      } else {
+        dotsHtml = '<span class="text-xs text-muted">No recent records</span>';
+      }
+
       const card = document.createElement('div');
       card.className = 'card subject-card';
       card.innerHTML = `
@@ -109,6 +133,12 @@ function renderStats(stats, lastSynced) {
           <span>Present: <strong>${subj.present}</strong></span>
           <span>Absent: <strong>${subj.absent}</strong></span>
           <span>Leave: <strong>${subj.onLeave}</strong></span>
+        </div>
+        <div class="subject-recent-attendance">
+          <span class="recent-title">Recent 7:</span>
+          <div class="recent-dots">
+            ${dotsHtml}
+          </div>
         </div>
       `;
       subjectGrid.appendChild(card);
